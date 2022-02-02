@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    
+<title>Inquiry</title>
+</head>
+<body>
+	<div th:fragment="inquiry_contents">
+		<div class="Form">
+			<div class="Form-Item">
+				<p class="Form-Item-Label">
+			 <table class="table table-bordered table-hover">
+			 <!-- 氏名 -->
+				<tr>
+                    <th class="active col-sm-3">氏名</th>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="山田　太郎" />
+                        </div>
+                    </td>
+                </tr>
+           <!-- 電話番号 -->
+                <tr>
+                    <th class="active">電話番号</th>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control"placeholder="xxxx@xxx.co.jp" />
+                        </div>
+                    </td>
+               </tr>
+           <!-- メールアドレス-->
+               <tr>
+                    <th class="active">携帯電話番号</th>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="xxx-xxxx-xxxxx" />
+                        </div>
+                    </td>
+              </tr>
+           <!-- 備考欄 -->
+               <tr>
+                    <th class="active">お問い合わせ内容</th>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="お問い合わせ内容" />
+                        </div>
+                        <br>※管理規約上に関するご質問はQ＆Aをご覧ください
+                        <br><a th:href="@{'/home'}">よくあるQ＆A</a>
+                    </td>
+              </tr>
+        </table>
+           </div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<title>集会室予約可能リスト</title>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+  <div th:fragment="show_contents">
+	<div class="container">
+		<h1>Show Live</h1>
+
+		<div th:object="${liveList}">
+
+			<div>
+				<label>日付</label>
+				<p th:text="*{dateId}"></p>
+			</div>
+			<div>
+				<label>場所</label>
+				<p th:text="*{place}"></p>
+			</div>
+			<div>
+				<label>備考</label>
+				<p th:text="*{remarks}"></p>
+			</div>
+		</div>
+		<div>
+			<a class="btn btn btn-secondary" th:href="@{/liveList/{dateId}/edit(dateId=*{dateId})}">編集</a>
+		</div>
+		<br>
+		<br>
+		<table class="table">
+			<thead>
+			<tr>
+				<th>名前</th>
+				<th>枚数</th>
+				<th>メモ</th>
+				<th></th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody th:if="${customerLists != null}">
+				<tr th:each="customer : ${customerLists}">
+					<td th:text="*{customer.name}">名前</td>
+					<td th:text="*{customer.number}">枚数</td>
+					<td th:text="*{customer.comment}">メモ</td>
+					<td><a class="btn btn-outline-success"
+						th:href="@{/customer/{id}/edit(id=*{customer.id})}">編集</a></td>
+					<td>
+						<form th:action="@{/customer/{id}(id=*{customer.id})}" th:method="post">
+							<input class="btn btn-outline-danger" type="submit" name="delete" value="削除" />
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<div class="pull-right">
+		<a class="btn btn-primary" href="customerNew.html" th:href="@{/customer/customerNew/{dateId}(dateId=*{dateId})}">新規作成</a>
+			<a class="btn btn-link" href="/liveList">一覧画面へ</a>
+		</div>
+	</div>
+  </div>
+</body>
+</html>

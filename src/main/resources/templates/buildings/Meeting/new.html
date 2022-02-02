@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>新規登録ページ</title>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+	<div th:fragment="MeetingRoomReserve_contents">
+	<div class="container">
+		<h1>Liveを新規登録</h1>
+		<form th:action="@{/liveList}" th:method="post" th:object="${liveList}">
+			<div class="form-group">
+				<label class="control-label">日付</label> <input class="form-control" placeholder="20181101"
+					type="number" name="dateId" />
+					<span class="text-danger" th:if="${#fields.hasErrors('dateId')}" th:errors="*{dateId}"></span>
+			</div>
+			<div class="form-group">
+				<label class="control-label">場所</label> <input class="form-control"
+					type="text" name="place" />
+					<span class="text-danger" th:if="${#fields.hasErrors('place')}" th:errors="*{place}"></span>
+			</div>
+			<div class="form-group">
+				<label class="control-label">備考</label> <input
+					class="form-control" type="text" name="remarks" />
+			</div>
+			<button class="btn btn-primary" type="submit">登録</button>
+		</form>
+		<div class="pull-right">
+			<a class="btn btn-link" href="/liveList">一覧画面へ</a>
+		</div>
+	</div>
+	</div>
+</body>
+</html>
