@@ -18,7 +18,7 @@ public class MeetingListService {
 	// Meeting_listを全件取得する
 	@Transactional(readOnly = true)
 	public List<MeetingList> findAll() {
-		return MeetingListMapper.MeetingFindAll();
+		return meetingListMapper.meetingFindAll();
 	}
 
 	// live_listから1件取得する
