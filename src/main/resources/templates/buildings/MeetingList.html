@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-       layout:decorator="homeLayout">
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 <title>集会室予約取り置き</title>
@@ -12,12 +11,12 @@
 <body>
 	<div th:fragment="MeetingList_contents">
 	<div class="container">
-		<h1>集会室取り置きリスト</h1>
+		<h1>集会室予約取り置きリスト</h1>
 		<table class="table">
 			<thead>
 				<tr>
 					<th>日付</th>
-					<th>場所</th>
+					<th>部屋</th>
 					<th>備考</th>
 					<th></th>
 					<th></th>
@@ -42,7 +41,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<a class="btn btn-primary" href="liveList/new">新規作成</a>
+		<a class="btn btn-primary" href="Meeting/new">新規作成</a>
 	</div>
 	</div>
 </body>

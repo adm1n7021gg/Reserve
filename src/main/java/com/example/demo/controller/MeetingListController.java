@@ -38,7 +38,7 @@ public class MeetingListController {
 	 */
 
 	// Meeting一覧画面の表示
-	@GetMapping("/MeetingList")
+	@GetMapping
 	public String findAll(Model model) {
 		List<MeetingList> meetingList = meetingListService.findAll();
 		model.addAttribute("meetingList", meetingList);

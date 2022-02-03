@@ -8,10 +8,10 @@
 <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-	<div th:fragment="MeetingRoomReserve_contents">
+	<div th:fragment="new_contents">
 	<div class="container">
-		<h1>Liveを新規登録</h1>
-		<form th:action="@{/liveList}" th:method="post" th:object="${liveList}">
+		<h1>空き集会室を新規登録</h1>
+		<form th:action="@{/MeetingList}" th:method="post" th:object="${MeetingList}">
 			<div class="form-group">
 				<label class="control-label">日付</label> <input class="form-control" placeholder="20181101"
 					type="number" name="dateId" />
@@ -29,7 +29,7 @@
 			<button class="btn btn-primary" type="submit">登録</button>
 		</form>
 		<div class="pull-right">
-			<a class="btn btn-link" href="/liveList">一覧画面へ</a>
+			<a class="btn btn-link" href="/MeetingList">一覧画面へ</a>
 		</div>
 	</div>
 	</div>

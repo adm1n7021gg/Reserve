@@ -15,10 +15,10 @@ public class MeetingListService {
 	@Autowired
 	private MeetingListMapper meetingListMapper;
 
-	// live_listを全件取得する
+	// Meeting_listを全件取得する
 	@Transactional(readOnly = true)
 	public List<MeetingList> findAll() {
-		return meetingListMapper.meetingFindAll();
+		return MeetingListMapper.MeetingFindAll();
 	}
 
 	// live_listから1件取得する
