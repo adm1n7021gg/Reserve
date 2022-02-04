@@ -22,7 +22,7 @@ import com.example.demo.service.MeetingCustomerListService;
  *
  */
 @Controller
-@RequestMapping("customer")
+@RequestMapping("meetingcustomer")
 public class MeetingCustomerListController {
 
 	@Autowired
@@ -34,7 +34,7 @@ public class MeetingCustomerListController {
 	public String newMeetingCustomerList(@PathVariable("dateId") Long dateId, @ModelAttribute MeetingCustomerList meetingCustomerList,
 			Model model) {
 		model.addAttribute("meetingCustomerList", meetingCustomerList);
-		return "Meetingcustomer/customerNew";
+		return "meetingcustomer/customerNew";
 	}
 
 	// お客さん情報編集画面の表示
@@ -42,20 +42,20 @@ public class MeetingCustomerListController {
 	public String edit(@PathVariable Long id, Model model) {
 		MeetingCustomerList meetingCustomerList = meetingCustomerListService.findOne(id);
 		model.addAttribute("meetingCustomerList", meetingCustomerList);
-		return "customer/customerEdit";
+		return "meetingcustomer/customerEdit";
 	}
 
 	// customerデータの保存
 	@PostMapping
-	public String customerCreate(
+	public String meetingcustomerCreate(
 			@Valid @ModelAttribute MeetingCustomerList meetingCustomerList,
 			BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
-			return "/Meetingcustomer/customerNew";
+			return "meetingcustomer/customerNew";
 		}
 		meetingCustomerListService.insert(meetingCustomerList);
-		return "redirect:/buildings/Meeting";
+		return "redirect:/meetinglist";
 	}
 
 	// お客さんデータの更新
@@ -64,18 +64,18 @@ public class MeetingCustomerListController {
 	public String update(@PathVariable Long id,
 			@Valid @ModelAttribute MeetingCustomerList meetingCustomerList, BindingResult result) {
 		if (result.hasErrors()) {
-			return "/Meetingcustomer/customerEdit";
+			return "/meetingcustomer/customerEdit";
 		}
 		meetingCustomerList.setId(id);
 		meetingCustomerListService.update(meetingCustomerList);
-		return "redirect:/buildings/Meeting";
+		return "redirect:/meetingList";
 	}
 
 	// お客さんデータの削除
 	@PostMapping("/{id}")
 	public String delete(@PathVariable Long id) {
 		meetingCustomerListService.delete(id);
-		return "redirect:/buildings/Meeting";
+		return "redirect:/meetingList";
 	}
 
 }

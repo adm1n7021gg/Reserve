@@ -24,7 +24,7 @@ public class MeetingList {
 	private String remarks;
 	
 	/** 子クラス（来場客リスト）の要素定義 */
-	private List<MeetingCustomerList> customers;
+	private List<MeetingCustomerList> meetingCustomers;
 	
 	public Long getDateId() {
 		return dateId;
@@ -50,12 +50,12 @@ public class MeetingList {
 		this.remarks = remarks;
 	}
 
-	public List<MeetingCustomerList> getCustomers() {
-		return customers;
+	public List<MeetingCustomerList> getMeetingCustomers() {
+		return meetingCustomers;
 	}
 
-	public void setCustomers(List<MeetingCustomerList> customers) {
-		this.customers = customers;
+	public void setMeetingCustomers(List<MeetingCustomerList> meetingCustomers) {
+		this.meetingCustomers = meetingCustomers;
 	}
 
 

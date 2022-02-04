@@ -29,12 +29,7 @@ public class HomeController {
 	public String postInquiry(Model model) {
 		return "buildings/Layout/homeLayout";
 	}
-	//集会室予約取り置きリスト画面遷移＆レイアウト反映
-	@GetMapping("/MeetingList")
-	public String getMeetingList(Model model) {
-		model.addAttribute("contents", "buildings/MeetingList :: MeetingList_contents");
-		return "buildings/Layout/homeLayout";
-	}
+
 	//集会室予約取り置きリスト画面遷移＆レイアウト反映
 	@GetMapping("/Meeting/new")
 	public String getnew(Model model) {

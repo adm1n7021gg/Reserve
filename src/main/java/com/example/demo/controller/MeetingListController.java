@@ -22,11 +22,11 @@ import com.example.demo.service.MeetingListService;
 /**
  * ライブ日程のリストを表示するコントローラー
  * ログイン後始めに表示されるページ
- * @author keita
+ * @author Yudai
  */
 
 @Controller
-@RequestMapping("MeetingList")
+@RequestMapping("meetingList")
 public class MeetingListController {
 
 	@Autowired
@@ -38,24 +38,24 @@ public class MeetingListController {
 	 */
 
 	// Meeting一覧画面の表示
-	@GetMapping("/MeetingList")
+	@GetMapping
 	public String findAll(Model model) {
 		List<MeetingList> meetingList = meetingListService.findAll();
 		model.addAttribute("meetingList", meetingList);
-		return "MeetingList";
+		return "meetingList";
 	}
 
 	/**
-	 * MeetigListデータ入力画面に遷移する
-	 * @param model MeetingList.htmlへデータを持っていく
-	 * @return MeetingList.htmlへ遷移
+	 * meetigListデータ入力画面に遷移する
+	 * @param model meetingList.htmlへデータを持っていく
+	 * @return meetingList.htmlへ遷移
 	 */
 
 	// 集会室取り置き日程新規作成画面の表示
 	@GetMapping("new")
 	public String newMeetingList(@ModelAttribute MeetingList meetingList, Model model) {
 		model.addAttribute("meetingList", meetingList);
-		return "Meeting/new";
+		return "meetingList/new";
 	}
 
 	// 集会室取り置き日程編集画面の表示
@@ -63,17 +63,20 @@ public class MeetingListController {
 	public String edit(@PathVariable Long dateId, Model model) {
 		MeetingList meetingList = meetingListService.findOne(dateId);
 		model.addAttribute("meetingList", meetingList);
-		return "Meeting/edit";
+		return "meetingList/edit";
 	}
+	
+	
+	
 
 	// 時間外予約取り置きリスト表示画面の表示
 	@GetMapping("{dateId}")
 	public String show(@PathVariable Long dateId, Model model) {
-		MeetingList MeetingListChoise = meetingListService.selectMeetingList(dateId);
+		MeetingList meetingListChoise = meetingListService.selectMeetingList(dateId);
 
 		// MeetingCustomerListに何もなければnullを渡す
 		try {
-			List<MeetingCustomerList> meetingCustomerLists = meetingListChoise.getCustomers();
+			List<MeetingCustomerList> meetingCustomerLists = meetingListChoise.getMeetingCustomers();
 			model.addAttribute("meetingCustomerLists", meetingCustomerLists);
 		} catch (NullPointerException e) {
 			// TODO: handle exception
@@ -82,20 +85,22 @@ public class MeetingListController {
 
 		MeetingList meetingList = meetingListService.findOne(dateId);
 		model.addAttribute("meetingList", meetingList);
-		return "buildings/Meeting/show";
+		return "buildings/meetingList/show";
 	}
 
-	// Live日程データの保存
+	
+	
+	// Meeting日程データの保存
 	@PostMapping
 	@Transactional
 	public String create(@Valid @ModelAttribute MeetingList meetingList,
 			BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
-			return "/buildings/Meeting/new";
+			return "/meetingList/new";
 		}
 		meetingListService.insert(meetingList);
-		return "redirect:/MeetingList";
+		return "redirect:/meetingList";
 	}
 
 	// Live日程データの更新
@@ -104,11 +109,11 @@ public class MeetingListController {
 	public String update(@PathVariable Long dateId,
 			@Valid @ModelAttribute MeetingList meetingList, BindingResult result) {
 		if (result.hasErrors()) {
-			return "/buildings/Meeting/edit";
+			return "/meetingList/edit";
 		}
 		meetingList.setDateId(dateId);
 		meetingListService.update(meetingList);
-		return "redirect:/buildings";
+		return "redirect:/meetingList";
 	}
 
 	// Live日程データの削除
@@ -116,6 +121,6 @@ public class MeetingListController {
 	@Transactional
 	public String delete(@PathVariable Long dateId) {
 		meetingListService.delete(dateId);
-		return "redirect:/liveList";
+		return "redirect:/meetingList";
 	}
 }
