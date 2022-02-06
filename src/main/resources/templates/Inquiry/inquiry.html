@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{Layout/homeLayout}">
 <head>
 <meta charset="UTF-8">
     <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
@@ -10,7 +11,7 @@
 <title>Inquiry</title>
 </head>
 <body>
-	<div th:fragment="inquiry_contents">
+	<div layout:fragment="contents">
 		<div class="Form">
 			<div class="Form-Item">
 				<p class="Form-Item-Label">

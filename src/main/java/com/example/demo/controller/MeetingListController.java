@@ -26,7 +26,7 @@ import com.example.demo.service.MeetingListService;
  */
 
 @Controller
-@RequestMapping("meetingList")
+@RequestMapping("/meeting")
 public class MeetingListController {
 
 	@Autowired
@@ -42,7 +42,7 @@ public class MeetingListController {
 	public String findAll(Model model) {
 		List<MeetingList> meetingList = meetingListService.findAll();
 		model.addAttribute("meetingList", meetingList);
-		return "meetingList";
+		return "meeting/list";
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class MeetingListController {
 	@GetMapping("new")
 	public String newMeetingList(@ModelAttribute MeetingList meetingList, Model model) {
 		model.addAttribute("meetingList", meetingList);
-		return "meetingList/new";
+		return "meeting/new";
 	}
 
 	// 集会室取り置き日程編集画面の表示
@@ -63,7 +63,7 @@ public class MeetingListController {
 	public String edit(@PathVariable Long dateId, Model model) {
 		MeetingList meetingList = meetingListService.findOne(dateId);
 		model.addAttribute("meetingList", meetingList);
-		return "meetingList/edit";
+		return "meeting/edit";
 	}
 	
 	
@@ -85,7 +85,7 @@ public class MeetingListController {
 
 		MeetingList meetingList = meetingListService.findOne(dateId);
 		model.addAttribute("meetingList", meetingList);
-		return "buildings/meetingList/show";
+		return "meeting/show";
 	}
 
 	

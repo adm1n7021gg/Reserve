@@ -12,30 +12,22 @@ public class HomeController {
 	public String getHome(Model model) {
 
 		//ホーム画面遷移
-		model.addAttribute("contents", "buildings/home :: home_contents");
-		return "buildings/Layout/homeLayout";
+		model.addAttribute("contents", "home :: home_contents");
+		return "Layout/homeLayout";
 	}
 	
     //ホーム画面からお問い合わせフォーム画面遷移
 	@GetMapping("/inquiry")
 	public String getInquiry(Model model) {
 
-		model.addAttribute("contents", "buildings/Inquiry/inquiry :: inquiry_contents");
-		return "buildings/Layout/homeLayout";
+		model.addAttribute("contents", "Inquiry/inquiry :: inquiry_contents");
+		return "Layout/homeLayout";
 	}
 
     //お問い合わせフォーム共通レイアウト反映
 	@PostMapping("/inquiry")
 	public String postInquiry(Model model) {
-		return "buildings/Layout/homeLayout";
+		return "Layout/homeLayout";
 	}
-
-	//集会室予約取り置きリスト画面遷移＆レイアウト反映
-	@GetMapping("/Meeting/new")
-	public String getnew(Model model) {
-		model.addAttribute("contents", "buildings/Meeting/new :: new_contents");
-		return "buildings/Layout/homeLayout";
-	}
-	
 
 }
